@@ -96,8 +96,8 @@ if __name__ == "__main__":
 
     # Perulangan sebanyak epoch
     for epoch in range(epochs):
-        total_loss_train = 0
-        total_loss_validasi = 0
+        total_loss_train = 0.0
+        total_loss_validasi = 0.0
         acc_train = 0
         acc_validasi = 0
 
@@ -129,7 +129,7 @@ if __name__ == "__main__":
 
         # simpan loss & akurasi training per-epoch
         mean_loss_train = total_loss_train / len(X_train)
-        data_loss_train.append(mean_loss_train)
+        data_loss_train.append(float(mean_loss_train))
         accuracy_train.append(acc_train / len(X_train) * 100)
 
         # --------------------------------
@@ -149,8 +149,14 @@ if __name__ == "__main__":
                 acc_validasi += 1
 
         mean_loss_val = total_loss_validasi / len(X_validasi)
-        data_loss_validasi.append(mean_loss_val)
+        data_loss_validasi.append(float(mean_loss_val))
         accuracy_validasi.append(acc_validasi / len(X_validasi) * 100)
+    
+    # hasil loss dan akurasi 
+    print("Loss train per epoch:", data_loss_train)
+    print("Accuracy train per epoch:", accuracy_train)
+    print("Loss validasi per epoch:", data_loss_validasi)
+    print("Accuracy validasi per epoch:", accuracy_validasi)
 
     # visualisasi loss dan akurasi setiap epoch
     plt.figure(figsize=(8,6))
