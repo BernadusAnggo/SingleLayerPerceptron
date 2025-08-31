@@ -7,7 +7,7 @@ Function SLP
 5. Update Bias dan Bobot
 
 Tugas Coding
-training : 80
-Validasi : 20
-buat grafik eror/loss train dan validasi
-buat grafik akurasi train dan validasi
+- training : 80
+- Validasi : 20
+- buat grafik eror/loss train dan validasi
+- buat grafik akurasi train dan validasi
