@@ -1,9 +1,8 @@
-#------------------------------------------------------------
-# Tugas Single Layer Perceptron
-# Bernadus Anggo Seno Aji
-# 25/571654/SPA/01170
-# DOKTOR ILMU KOMPUTER
-#------------------------------------------------------------
+Tugas Single Layer Perceptron
+- Bernadus Anggo Seno Aji
+- 25/571654/SPA/01170
+- DOKTOR ILMU KOMPUTER
+
 Function SLP
 1. Inisialisasi Bobot dan bias
 2. Dot Product
