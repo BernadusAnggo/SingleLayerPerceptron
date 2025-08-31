@@ -68,19 +68,19 @@ if __name__ == "__main__":
     # -----------------------------
     X_class0, y_class0 = X[:50], y[:50]
     train_size0 = int(0.8 * len(X_class0))
-    X_train0, X_test0 = X_class0[:train_size0], X_class0[train_size0:]
-    y_train0, y_test0 = y_class0[:train_size0], y_class0[train_size0:]
+    X_train0, X_val0 = X_class0[:train_size0], X_class0[train_size0:]
+    y_train0, y_val0 = y_class0[:train_size0], y_class0[train_size0:]
 
     X_class1, y_class1 = X[50:100], y[50:100]
     train_size1 = int(0.8 * len(X_class1))
-    X_train1, X_test1 = X_class1[:train_size1], X_class1[train_size1:]
-    y_train1, y_test1 = y_class1[:train_size1], y_class1[train_size1:]
+    X_train1, X_val1 = X_class1[:train_size1], X_class1[train_size1:]
+    y_train1, y_val1 = y_class1[:train_size1], y_class1[train_size1:]
 
-    # Gabungkan train & test
+    # Gabungkan train & val
     X_train = np.vstack((X_train0, X_train1))
     y_train = np.hstack((y_train0, y_train1))
-    X_validasi = np.vstack((X_test0, X_test1))
-    y_validasi = np.hstack((y_test0, y_test1))
+    X_validasi = np.vstack((X_val0, X_val1))
+    y_validasi = np.hstack((y_val0, y_val1))
 
     # Inisialisasi bobot dan bias 0.5, learning rate 0.1
     weights, bias = init_params(input_dim=X.shape[1], init_w=0.5, init_b=0.5)
