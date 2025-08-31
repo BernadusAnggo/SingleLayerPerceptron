@@ -43,7 +43,7 @@ def update_params(weights, bias, x_i, y_true, y_pred, learning_rate):
     # gradient descent
     gradien = 2 * (y_pred - y_true) * (1 - y_pred) * y_pred
     grad_w = gradien * x_i
-    grad_b = gradien * 1.0
+    grad_b = gradien * 1
     # update bobot dan bias
     weights = weights - learning_rate * grad_w
     bias = bias - learning_rate * grad_b
@@ -96,8 +96,8 @@ if __name__ == "__main__":
 
     # Perulangan sebanyak epoch
     for epoch in range(epochs):
-        total_loss_train = 0.0
-        total_loss_validasi = 0.0
+        total_loss_train = 0
+        total_loss_validasi = 0
         acc_train = 0
         acc_validasi = 0
 
@@ -151,42 +151,54 @@ if __name__ == "__main__":
         mean_loss_val = total_loss_validasi / len(X_validasi)
         data_loss_validasi.append(float(mean_loss_val))
         accuracy_validasi.append(acc_validasi / len(X_validasi) * 100)
-    
-    # hasil loss dan akurasi 
-    print("Loss train per epoch:", data_loss_train)
-    print("Accuracy train per epoch:", accuracy_train)
-    print("Loss validasi per epoch:", data_loss_validasi)
-    print("Accuracy validasi per epoch:", accuracy_validasi)
 
     # visualisasi loss dan akurasi setiap epoch
-    plt.figure(figsize=(8,6))
-    # Subplot 1: Loss training
-    plt.subplot(2,2,1)
-    plt.plot(range(1, epochs + 1), data_loss_train)
-    plt.xlabel("Epoch")
-    plt.ylabel("Mean Squared Error")
-    plt.title(f"Training Loss")
-    
-    # Subplot 2: Akurasi training
-    plt.subplot(2,2,2)
-    plt.plot(range(1, epochs+1), accuracy_train, color="blue")
-    plt.xlabel("Epoch")
-    plt.ylabel("Accuracy (%)")
-    plt.title("Training Accuracy")
-    plt.tight_layout()
+    plt.figure(figsize=(8, 6))
+    epochs_axis = range(1, epochs + 1)
 
-    #Subplot 3: Loss validasi
-    plt.subplot(2,2,3)
-    plt.plot(range(1, epochs + 1), data_loss_validasi)
-    plt.xlabel("Epoch")
-    plt.ylabel("Mean Squared Error")
-    plt.title(f"validasi Loss")
-    
+    # Subplot 1: Loss training
+    ax1 = plt.subplot(2, 2, 1)
+    ax1.plot(epochs_axis, data_loss_train, marker='o')
+    ax1.set_xlabel("Epoch")
+    ax1.set_ylabel("Mean Squared Error")
+    ax1.set_title("Training Loss")
+    for x, y in zip(epochs_axis, data_loss_train):
+        ax1.annotate(f"{float(y):.4f}", (x, y),
+                    textcoords="offset points", xytext=(0, 5),
+                    ha='center', fontsize=8)
+
+    # Subplot 2: Akurasi training
+    ax2 = plt.subplot(2, 2, 2)
+    ax2.plot(epochs_axis, accuracy_train, marker='o')
+    ax2.set_xlabel("Epoch")
+    ax2.set_ylabel("Accuracy (%)")
+    ax2.set_title("Training Accuracy")
+    for x, y in zip(epochs_axis, accuracy_train):
+        ax2.annotate(f"{float(y):.2f}", (x, y),
+                    textcoords="offset points", xytext=(0, 5),
+                    ha='center', fontsize=8)
+
+    # Subplot 3: Loss validasi
+    ax3 = plt.subplot(2, 2, 3)
+    ax3.plot(epochs_axis, data_loss_validasi, marker='o')
+    ax3.set_xlabel("Epoch")
+    ax3.set_ylabel("Mean Squared Error")
+    ax3.set_title("Validasi Loss")
+    for x, y in zip(epochs_axis, data_loss_validasi):
+        ax3.annotate(f"{float(y):.4f}", (x, y),
+                    textcoords="offset points", xytext=(0, 5),
+                    ha='center', fontsize=8)
+
     # Subplot 4: Akurasi validasi
-    plt.subplot(2,2,4)
-    plt.plot(range(1, epochs+1), accuracy_validasi, color="blue")
-    plt.xlabel("Epoch")
-    plt.ylabel("Accuracy (%)")
-    plt.title("validasi Accuracy")
+    ax4 = plt.subplot(2, 2, 4)
+    ax4.plot(epochs_axis, accuracy_validasi, marker='o')
+    ax4.set_xlabel("Epoch")
+    ax4.set_ylabel("Accuracy (%)")
+    ax4.set_title("Validasi Accuracy")
+    for x, y in zip(epochs_axis, accuracy_validasi):
+        ax4.annotate(f"{float(y):.2f}", (x, y),
+                    textcoords="offset points", xytext=(0, 5),
+                    ha='center', fontsize=8)
+
     plt.tight_layout()
     plt.show()
