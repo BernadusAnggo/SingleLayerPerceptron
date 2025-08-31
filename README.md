@@ -2,8 +2,8 @@
 Function SLP
 1. Inisialisasi Bobot dan bias
 2. Dot Product
-3. Fungsi aktifasi (sigmoid, dll)
-4. Fungsi Eror
+3. Fungsi aktifasi (sigmoid)
+4. Fungsi Eror (sum squared error)
 5. Update Bias dan Bobot
 
 Tugas Coding
